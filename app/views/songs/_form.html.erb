@@ -1,0 +1,13 @@
+<%= form_with model: @song do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :audio %>
+    <%= f.file_field :audio %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
