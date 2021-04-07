@@ -1,13 +1,9 @@
-<%= form_with model: @song do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    <%= f.label :audio %>
-    <%= f.file_field :audio %>
-  </div>
-
-  <%= f.submit %>
+<%= form_for(@song) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name,class: "form-control" %>
+  <%= f.label :audio %>
+  <%= f.file_field :audio %>
+  <%= f.label :album_id %>
+  <%= f.select(:album_id, @albums.collect{|item| [item.name, item.id]}) %>
+  <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>

@@ -1,12 +1,12 @@
 class SongsController < ApplicationController
-  
+  before_action :find_song, only: %i[show edit update destroy]
   def new
     @song = Song.new
+    @albums = Album.all
   end
 
   def create
     @song = Song.new(song_params)
-    @song.audio.attach(params[:song][:audio])
     if @song.save
       redirect_to @song
     else
@@ -15,12 +15,36 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find_by(id: params[:id])
   end
 
+  def edit
+    @albums = Album.all
+  end
+
+  def update
+    if @song.update(song_params)
+      redirect_to @song
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @song.destroy
+    flash[:success] = "Song deleted"
+    redirect_to songs_url
+  end
   private
 
-  def song_params
-    params.require(:song).permit(:name)
+  def find_song
+    @song = Song.find_by(id: params[:id])
+    unless @song
+      redirect_to root_path
+    end
   end
+
+  def song_params
+    params.require(:song).permit(:name, :album_id, :audio)
+  end
+
 end

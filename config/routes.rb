@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users
-  resources :songs, only: %i[new show create index]
+  resources :songs
+  resources :albums
 end
