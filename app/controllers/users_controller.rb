@@ -13,6 +13,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def index
+    @users = User.paginate(page: params[:page])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
