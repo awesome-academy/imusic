@@ -1,5 +1,5 @@
 class Song < ApplicationRecord
-  # belongs_to :country
+  belongs_to :country
   belongs_to :album
   has_one :beat
   has_many :comments

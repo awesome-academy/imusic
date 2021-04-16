@@ -1,4 +1,4 @@
-<%= @song.name %>
-<audio src="<%= audio_path rails_blob_url @song.audio %>" type="audio/mpeg" controls>
+<p><%= @song.name %></p>
+<div><audio src="<%= audio_path rails_blob_url @song.audio %>" type="audio/mpeg" controls>
     Your browser does not support the audio element.
-</audio>
+</audio></div>
