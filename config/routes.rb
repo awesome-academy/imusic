@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users
   resources :songs
   resources :albums
+  resources :countries
 end

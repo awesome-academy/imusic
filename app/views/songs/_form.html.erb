@@ -5,5 +5,7 @@
   <%= f.file_field :audio %>
   <%= f.label :album_id %>
   <%= f.select(:album_id, @albums.collect{|item| [item.name, item.id]}) %>
+  <%= f.label :country_id %>
+  <%= f.select(:country_id, @countries.collect{|item| [item.name, item.id]}) %>
   <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>
