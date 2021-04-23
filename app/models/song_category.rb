@@ -1,4 +1,4 @@
 class SongCategory < ApplicationRecord
-  belong_to :song
-  belong_to :category
+  belongs_to :song
+  belongs_to :category
 end

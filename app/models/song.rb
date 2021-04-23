@@ -7,6 +7,7 @@ class Song < ApplicationRecord
   has_many :favorite_songs
   has_many :views
   has_many :song_categories
+  has_many :categories, through: :song_categories
   has_many :artist_songs
 
   has_one_attached :audio
