@@ -6,6 +6,7 @@ class Admin::SongsController < ApplicationController
     @albums = Album.all
     @countries = Country.all
     @categories = Category.all
+    @artists = Artist.all
   end
 
   def create
@@ -13,9 +14,6 @@ class Admin::SongsController < ApplicationController
     if @song.save
       redirect_to admin_songs_path
     else
-      @albums = Album.all
-      @countries = Country.all
-      @categories = Category.all
       render :new
     end
   end
@@ -28,6 +26,7 @@ class Admin::SongsController < ApplicationController
     @albums = Album.all
     @countries = Country.all
     @categories = Category.all
+    @artists = Artist.all
   end
 
   def update
@@ -53,7 +52,7 @@ class Admin::SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:name, :album_id, :country_id, :audio, :category_ids => [])
+    params.require(:song).permit(:name, :album_id, :country_id, :audio, :category_ids => [], :artist_ids => [])
   end
 
   def require_admin

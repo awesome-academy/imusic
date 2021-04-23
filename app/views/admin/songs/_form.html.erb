@@ -5,10 +5,17 @@
   <%= f.file_field :audio %>
   <%= f.label :album_id %>
   <%= f.select(:album_id, @albums.collect{|item| [item.name, item.id]}) %>
-  <%= f.label :country_id %>
-  <%= f.select(:country_id, @countries.collect{|item| [item.name, item.id]}) %>
-  <div class = "collection-check-boxes">  
+  <div>
+    <%= f.label :country_id %>
+    <%= f.select(:country_id, @countries.collect{|item| [item.name, item.id]}) %>
+  </div>
+  <div class = "collection-check-boxes"> 
+    <p>All categories</p> 
     <%= f.collection_check_boxes :category_ids, Category.all,:id, :name %>
+  </div>
+  <div>
+    <p>All Artists</p>
+    <%= f.select(:artist_ids, @artists.collect{|item| [item.name, item.id]}, {}, {:multiple => true, :size => 3}) %>
   </div>
   <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>

@@ -4,6 +4,7 @@ class Admin::AlbumsController < ApplicationController
 
   def new
     @album = Album.new
+    @artists = Artist.all
   end
 
   def create
@@ -20,6 +21,7 @@ class Admin::AlbumsController < ApplicationController
   end
 
   def edit
+    @artists = Artist.all
   end
 
   def update
@@ -46,7 +48,7 @@ class Admin::AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:name)
+    params.require(:album).permit(:name, :artist_ids => [])
   end
 
   def require_admin

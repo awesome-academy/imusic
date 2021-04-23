@@ -1,5 +1,9 @@
 <%= form_for([:admin, @album]) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name,class: "form-control" %>
+  <div>
+    <p>All Artists</p>
+    <%= f.select(:artist_ids, @artists.collect{|item| [item.name, item.id]}, {}, {:multiple => true, :size => 3}) %>
+  </div>
   <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>

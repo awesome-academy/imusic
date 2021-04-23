@@ -9,6 +9,7 @@ class Song < ApplicationRecord
   has_many :song_categories
   has_many :categories, through: :song_categories
   has_many :artist_songs
+  has_many :artists, through: :artist_songs
 
   has_one_attached :audio
   # validates :audio, content_type: {in %w[audio/mpeg], message: "must be a valid audio format"}
