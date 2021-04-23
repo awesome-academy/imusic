@@ -4,16 +4,17 @@ class SongsController < ApplicationController
     @song = Song.new
     @albums = Album.all
     @countries = Country.all
+    @categories = Category.all
   end
 
   def create
     @song = Song.new(song_params)
-    # @song.audio.attach(params[:song][:audio])
     if @song.save
       redirect_to @song
     else
       @albums = Album.all
       @countries = Country.all
+      @categories = Category.all
       render :new
     end
   end
@@ -24,6 +25,7 @@ class SongsController < ApplicationController
   def edit
     @albums = Album.all
     @countries = Country.all
+    @categories = Category.all
   end
 
   def update
@@ -49,7 +51,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:name, :album_id, :country_id, :audio)
+    params.require(:song).permit(:name, :album_id, :country_id, :audio, :category_ids => [])
   end
 
 end
