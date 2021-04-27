@@ -1,4 +1,4 @@
-<%= form_for(@category) do |f| %>
+<%= form_for([:admin, @country]) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name,class: "form-control" %>
   <%= f.submit "submit", class: "btn btn-primary" %>

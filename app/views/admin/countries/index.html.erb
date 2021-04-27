@@ -1,0 +1,15 @@
+<% provide(:title, 'All countries') %>
+<h1>All countries</h1>
+
+<ul class="countries">
+  <% @countries.each do |country|%>
+    <li>
+      <%= country.name %>
+      <%= link_to "edit", edit_admin_country_path(country) %>
+      <%= link_to "delete", [:admin, country], method: :delete,
+      data: { confirm: "You sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
