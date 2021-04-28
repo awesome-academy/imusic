@@ -1,46 +1,9 @@
 class SongsController < ApplicationController
-  before_action :find_song, only: %i[show edit update destroy]
-  def new
-    @song = Song.new
-    @albums = Album.all
-    @countries = Country.all
-    @categories = Category.all
-  end
-
-  def create
-    @song = Song.new(song_params)
-    if @song.save
-      redirect_to @song
-    else
-      @albums = Album.all
-      @countries = Country.all
-      @categories = Category.all
-      render :new
-    end
-  end
-
+  before_action :find_song, only: %i[show]
+ 
   def show
   end
-
-  def edit
-    @albums = Album.all
-    @countries = Country.all
-    @categories = Category.all
-  end
-
-  def update
-    if @song.update(song_params)
-      redirect_to @song
-    else
-      render "edit"
-    end
-  end
-
-  def destroy
-    @song.destroy
-    flash[:success] = "Song deleted"
-    redirect_to songs_url
-  end
+  
   private
 
   def find_song

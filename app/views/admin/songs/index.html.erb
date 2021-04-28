@@ -1,0 +1,18 @@
+<% provide(:title, 'All songs') %>
+<h1>All songs</h1>
+
+<ul class="songs">
+  <% @songs.each do |song|%>
+    <li>
+      <%= song.name %>
+      <div><audio src="<%= audio_path rails_blob_url song.audio %>" type="audio/mpeg" controls>
+      Your browser does not support the audio element.
+      </audio></div>
+      <%= link_to "edit", edit_admin_song_path(song) %>
+      <%= link_to "delete", [:admin, song], method: :delete,
+      data: { confirm: "You sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
