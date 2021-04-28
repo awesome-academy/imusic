@@ -31,7 +31,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    @user = User.all
     @category.destroy
     flash[:success] = "Category deleted"
     redirect_to admin_categories_path

@@ -1,0 +1,15 @@
+<% provide(:title, 'All artists') %>
+<h1>All artists</h1>
+
+<ul class="artists">
+  <% @artists.each do |artist|%>
+    <li>
+      <%= artist.name %>
+      <%= link_to "edit", edit_admin_artist_path(artist) %>
+      <%= link_to "delete", [:admin, artist], method: :delete,
+      data: { confirm: "You sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
