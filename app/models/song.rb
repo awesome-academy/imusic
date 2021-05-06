@@ -13,4 +13,8 @@ class Song < ApplicationRecord
 
   has_one_attached :audio
   # validates :audio, content_type: {in %w[audio/mpeg], message: "must be a valid audio format"}
+  has_one_attached :image
+  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+                                    message: "must be a valid image format" },
+                    size: { less_than: 5.megabytes, message: "should be less than 5MB" }
 end

@@ -1,21 +1,31 @@
 <%= form_for([:admin, @song]) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name,class: "form-control" %>
+  <li>
+    <%= f.label :name %>
+    <%= f.text_field :name,class: "form-control" %>
+  </li>
+  <li>
   <%= f.label :audio %>
   <%= f.file_field :audio %>
+  </li>
+  <li>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  </li>
+  <li>
   <%= f.label :album_id %>
   <%= f.select(:album_id, @albums.collect{|item| [item.name, item.id]}) %>
-  <div>
+  </li>
+  <li>
     <%= f.label :country_id %>
     <%= f.select(:country_id, @countries.collect{|item| [item.name, item.id]}) %>
-  </div>
-  <div class = "collection-check-boxes"> 
+  </li>
+  <li class = "collection-check-boxes"> 
     <p>All categories</p> 
     <%= f.collection_check_boxes :category_ids, Category.all,:id, :name %>
-  </div>
-  <div>
+  </li>
+  <li>
     <p>All Artists</p>
     <%= f.select(:artist_ids, @artists.collect{|item| [item.name, item.id]}, {}, {:multiple => true, :size => 3}) %>
-  </div>
+  </li>
   <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>

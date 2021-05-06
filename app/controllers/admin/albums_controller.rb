@@ -26,7 +26,7 @@ class Admin::AlbumsController < ApplicationController
 
   def update
     if @album.update(album_params)
-      redirect_to @album
+      redirect_to admin_albums_path
     else
       render "edit"
     end
@@ -48,7 +48,7 @@ class Admin::AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:name, :artist_ids => [])
+    params.require(:album).permit(:name, :image, :artist_ids => [])
   end
 
   def require_admin

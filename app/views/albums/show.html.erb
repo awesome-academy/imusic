@@ -1,1 +1,4 @@
 <%= @album.name %>
+<div class = "albums">
+  <%= image_tag @album.image if @album.image.attached? %>
+</div>

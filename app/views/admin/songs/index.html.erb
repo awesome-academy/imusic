@@ -5,12 +5,15 @@
   <% @songs.each do |song|%>
     <li>
       <%= song.name %>
-      <div><audio src="<%= audio_path rails_blob_url song.audio %>" type="audio/mpeg" controls>
-      Your browser does not support the audio element.
-      </audio></div>
       <%= link_to "edit", edit_admin_song_path(song) %>
       <%= link_to "delete", [:admin, song], method: :delete,
       data: { confirm: "You sure?" } %>
+      <div>
+        <%= image_tag song.image if song.image.attached? %>
+        <audio src="<%= audio_path rails_blob_url song.audio %>" type="audio/mpeg" controls>
+        Your browser does not support the audio element.
+        </audio>
+      </div>
     </li>
   <% end %>
 </ul>
