@@ -2,6 +2,8 @@ class SongsController < ApplicationController
   before_action :find_song, only: %i[show]
  
   def show
+    songview = @song.view.to_i + 1
+    @song.update_attribute :view, songview
   end
   
   private
@@ -14,7 +16,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:name, :album_id, :country_id, :audio, :category_ids => [], :artist_ids => [])
+    params.require(:song).permit(:name, :album_id, :country_id, :audio, :image, :category_ids => [], :artist_ids => [])
   end
 
 end

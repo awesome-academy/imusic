@@ -52,7 +52,7 @@ class Admin::SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:name, :album_id, :country_id, :audio, :category_ids => [], :artist_ids => [])
+    params.require(:song).permit(:name, :album_id, :country_id, :audio, :image, :category_ids => [], :artist_ids => [])
   end
 
   def require_admin

@@ -8,6 +8,7 @@
       <%= link_to "edit", edit_admin_album_path(album) %>
       <%= link_to "delete", [:admin, album], method: :delete,
       data: { confirm: "You sure?" } %>
+      <%= image_tag album.image if album.image.attached? %>
     </li>
   <% end %>
 </ul>

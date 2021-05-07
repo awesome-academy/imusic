@@ -1,4 +1,8 @@
 <p><%= @song.name %></p>
-<div><audio src="<%= audio_path rails_blob_url @song.audio %>" type="audio/mpeg" controls>
-    Your browser does not support the audio element.
+<p> Views: </p>
+<p><%= @song.view %></p>
+<div class ="songs">
+  <%= image_tag @song.image if @song.image.attached? %> 
+  <audio src="<%= audio_path rails_blob_url @song.audio %>" type="audio/mpeg" controls>
+  Your browser does not support the audio element.
 </audio></div>
