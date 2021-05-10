@@ -1,8 +1,19 @@
-<p><%= @song.name %></p>
-<p> Views: </p>
-<p><%= @song.view %></p>
-<div class ="songs">
-  <%= image_tag @song.image if @song.image.attached? %> 
-  <audio src="<%= audio_path rails_blob_url @song.audio %>" type="audio/mpeg" controls>
-  Your browser does not support the audio element.
-</audio></div>
+<div class = "col-md-12">
+  <div class = "d-flex justify-content-between mb-3 box1 music-listen-title" style = "line-height: 33px; align-items: center">
+    <h2 class = "title"><%= @song.name %></h2>
+    <span class = "d-flex listen">
+      Views: <%= @song.view %>
+    </span>
+  </div>
+  <% @song.artists.each do |artist| %>
+    <p><%= artist.name %></p>
+  <% end %>
+</div>
+<div class = "song">
+  <div class = "player">
+    <div class = "imgSg">
+      <%= image_tag @song.image if @song.image.attached? %>
+    </div>
+    <audio src="<%= audio_path rails_blob_url @song.audio %>" type="audio/mpeg" controls>
+  </div>
+</div>
