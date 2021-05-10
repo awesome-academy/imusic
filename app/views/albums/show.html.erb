@@ -1,4 +1,22 @@
-<%= @album.name %>
-<div class = "albums">
-  <%= image_tag @album.image if @album.image.attached? %>
+<div class = "col-md-12">
+  <div class = "class= d-flex justify-content-between mb-3 box1 music-listen-title" style = "line-height: 33px; align-items: center">
+    <h2 class = "title"><%= @album.name %></h2>
+    <span class = "d-flex listen">
+      Views: <%= @album.view %>
+    </span>
+  </div>
+  <% @album.artists.each do |artist| %>
+    <p><%= artist.name %></p>
+  <% end %>
+</div>
+<div class = "album">
+  <div class = "player">
+    <div class = "imgSg">
+      <%= image_tag @album.image if @album.image.attached? %>
+    </div>
+    <% @album.songs.each do |song| %>
+      <p><%= song.name %>
+      <audio src="<%= audio_path rails_blob_url song.audio %>" type="audio/mpeg" controls>
+    <% end %>
+  </div>
 </div>
