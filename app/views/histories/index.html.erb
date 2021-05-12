@@ -1,0 +1,11 @@
+<h1>Your histories</h1>
+
+<ul class="songs">
+  <% @histories.reverse.each do |history| %>
+    <li>
+      <%= link_to history.song.name, history.song %>
+      <%= image_tag history.song.image if history.song.image.attached? %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate %>
