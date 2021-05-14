@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :countries, only: [:index, :show]
   resources :categories, only: [:index, :show]
   resources :artists, only: [:index, :show]
+  resources :histories, only: [:index]
   namespace :admin do
     resources :songs, except: [:show]
     resources :categories, except: [:show]

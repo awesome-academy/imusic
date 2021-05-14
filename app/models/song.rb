@@ -17,4 +17,9 @@ class Song < ApplicationRecord
   validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
                                     message: "must be a valid image format" },
                     size: { less_than: 5.megabytes, message: "should be less than 5MB" }
+  
+  def create_history(current_user)
+    History.create(user_id: current_user.id, song_id: self.id)
+  end
+
 end

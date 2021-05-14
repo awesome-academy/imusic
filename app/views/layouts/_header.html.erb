@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="root_path">iMusic</a>
+<a class="navbar-brand" href = <%= root_path %>>iMusic</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -21,6 +21,8 @@
         <a class="dropdown-item" href="#">Playlists</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Likes</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href = <%= histories_path %>>Histories</a>
       </div>
     </li>
     <li class="nav-item active">

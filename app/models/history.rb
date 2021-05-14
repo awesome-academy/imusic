@@ -1,4 +1,4 @@
 class History < ApplicationRecord
-  belong_to :user
-  belong_to :song
+  belongs_to :user
+  belongs_to :song
 end
