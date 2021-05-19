@@ -6,7 +6,7 @@
     </span>
   </div>
   <% @song.artists.each do |artist| %>
-    <p><%= artist.name %></p>
+    <%= link_to artist.name, artist %>
   <% end %>
 </div>
 <div class = "song">
@@ -16,4 +16,13 @@
     </div>
     <audio src="<%= audio_path rails_blob_url @song.audio %>" type="audio/mpeg" controls>
   </div>
+</div>
+<h3>Recomended for you</h3>
+<div class = "cards row">
+  <% @related_songs.each do |song| %>
+    <div class="card col-md-2" class = "songs">
+      <%= image_tag song.image %>
+      <%= link_to song.name, song %>
+    </div>
+  <% end %>
 </div>

@@ -17,9 +17,21 @@ class Song < ApplicationRecord
   validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
                                     message: "must be a valid image format" },
                     size: { less_than: 5.megabytes, message: "should be less than 5MB" }
-  
-  def create_history(current_user)
-    History.create(user_id: current_user.id, song_id: self.id)
+
+  scope :related_category_songs, ->(category_ids) do
+    joins(:song_categories).where("song_categories.category_id IN (?)", category_ids).limit(6)
   end
 
+  scope :related_artist_songs, ->(artist_ids) do
+    joins(:artist_songs).where("artist_songs.artist_id IN (?)", artist_ids).limit(6)
+  end
+
+  scope :search_results, ->{ where("lower(name) LIKE :search", search: "%#{@parameter}%") }
+
+  def create_history(current_user)
+    unless current_user.blank?
+      History.create(user_id: current_user.id, song_id: self.id)
+    end
+  end
+  
 end

@@ -1,0 +1,24 @@
+<h3>Search Result</h3>
+<% if params[:search].blank? %> 
+  <div class="alert alert-primary" role="alert">
+    Empty field!
+  </div>
+<% else %>
+  <% @results.each do |result| %>
+    <div class = "row-result">
+      <div class = "col-md-2">
+        <div class = "songs">
+          <%= image_tag result.image %>
+        </div>
+      </div>
+      <div class = "col-md-10">
+        <%= link_to result.name, result %>
+          <span>by</span>
+          <% result.artists.each do |artist| %>
+            <%= link_to artist.name, artist %>
+          <% end %>
+      </div>
+      <br>
+    </div>
+  <% end %>
+<% end %>
