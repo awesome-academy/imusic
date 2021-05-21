@@ -1,8 +1,10 @@
 class SongsController < ApplicationController
   before_action :find_song
-  before_action :logged_in_user
 
   def show
+    @related_songs = Song.related_artist_songs(@song.artist_ids).where.not(id: @song.id)
+    @related_songs += Song.related_category_songs(@song.category_ids).where.not(id: @song.id)
+    @related_songs = @related_songs.uniq
     songview = @song.view.to_i + 1
     @song.update_attribute :view, songview
     @song.create_history(current_user)

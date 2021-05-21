@@ -76,3 +76,24 @@ margin: 0 0 30px 0;
   width: 100%;
   outline: none;
 }
+
+.card {
+  border: none;
+}
+
+.card img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.card a{
+  text-align: center;
+}
+
+.row-result{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 20px 0;
+}

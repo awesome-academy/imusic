@@ -20,5 +20,5 @@ Rails.application.routes.draw do
     resources :countries, except: [:show]
     resources :artists, except: [:show]
   end
-
+  get "/search", to: "pages#search"
 end
